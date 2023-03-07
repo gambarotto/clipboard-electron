@@ -1,17 +1,8 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
+import { PrismaClient } from '@prisma/client'
 
-// The built directory structure
-//
-// ├─┬ dist-electron
-// │ ├─┬ main
-// │ │ └── index.js    > Electron-Main
-// │ └─┬ preload
-// │   └── index.js    > Preload-Scripts
-// ├─┬ dist
-// │ └── index.html    > Electron-Renderer
-//
 process.env.DIST_ELECTRON = join(__dirname, '../')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
 process.env.PUBLIC = process.env.VITE_DEV_SERVER_URL
@@ -73,8 +64,32 @@ async function createWindow() {
     return { action: 'deny' }
   })
 }
+async function registerListeners() {
+  ipcMain.handle('test', (_, arg) => {
+    const prisma = new PrismaClient()
 
-app.whenReady().then(createWindow)
+    async function main() {
+      const user = await prisma.user.create({
+        data: {
+          name: 'Alice 2',
+          email: 'alice2@prisma.io',
+        },
+      })
+      console.log(user)
+    }
+
+    main()
+      .then(async () => {
+        await prisma.$disconnect()
+      })
+      .catch(async (e) => {
+        console.error(e)
+        await prisma.$disconnect()
+        process.exit(1)
+      });
+  })
+}
+app.on('ready', createWindow).whenReady().then(registerListeners).catch(e => console.error(e))
 
 app.on('window-all-closed', () => {
   win = null
@@ -95,22 +110,5 @@ app.on('activate', () => {
     allWindows[0].focus()
   } else {
     createWindow()
-  }
-})
-
-// New window example arg: new windows url
-ipcMain.handle('open-win', (_, arg) => {
-  const childWindow = new BrowserWindow({
-    webPreferences: {
-      preload,
-      nodeIntegration: true,
-      contextIsolation: false,
-    },
-  })
-
-  if (process.env.VITE_DEV_SERVER_URL) {
-    childWindow.loadURL(`${url}#${arg}`)
-  } else {
-    childWindow.loadFile(indexHtml, { hash: arg })
   }
 })
