@@ -12,11 +12,13 @@ dist
 dist-ssr
 dist-electron
 release
+*.db
 *.local
 
 # Editor directories and files
 .vscode/.debug.env
 .idea
+.env
 .DS_Store
 *.suo
 *.ntvs*
