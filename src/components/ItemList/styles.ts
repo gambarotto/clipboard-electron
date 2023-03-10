@@ -8,19 +8,33 @@ export const Container = styled.div`
   background-color: #333;
 
   border-radius: 4px;
-
+  height: 30px;
+  transition: height 5s;
+  
   div.hoverAnnotation {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 4px 5px;
+    height: 30px;
+    overflow: hidden;
+    
+    a {
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    &:hover a{
+      opacity: 1;
+    }
   }
+
   div.containerName {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: start;
+    height: 100%;
   }
   div.dot {
     width: 3px;
@@ -47,14 +61,23 @@ export const Container = styled.div`
     margin-top: 5px;
   }
   & p.dropdown-content {
-    display: none;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+
     min-width: 160px;
-    padding: 0px 5px;
+    padding: 0px 15px;
+    padding-bottom: 15px;
     font-size: 12px;
     letter-spacing: 1px;
-    color: ${shade(0.5,'#fff')};
+    color: ${shade(0.3,'#fff')};
+    transition: opacity 0.5s;
   }
-    &:hover .dropdown-content {
-      display: block;
-    }
+  &:hover {
+    height: auto;
+  }
+  &:hover p.dropdown-content {
+    opacity: 1;
+    visibility: visible;
+  }
 `

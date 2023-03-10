@@ -12,7 +12,6 @@ export default createGlobalStyle`
     color: rgba(255, 255, 255, 0.87);
 
     font-size: 14px;
-    font-family: sans-serif;
-
+    font-family: 'Roboto', sans-serif;
   }
 `;
