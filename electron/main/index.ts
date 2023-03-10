@@ -1,4 +1,4 @@
-import { app, BrowserWindow, shell, ipcMain } from 'electron'
+import { app, BrowserWindow, shell, ipcMain, Menu } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
 import { PrismaClient } from '@prisma/client'
@@ -19,11 +19,6 @@ if (!app.requestSingleInstanceLock()) {
   app.quit()
   process.exit(0)
 }
-
-// Remove electron security warnings
-// This warning only shows in development mode
-// Read more on https://www.electronjs.org/docs/latest/tutorial/security
-// process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
 let win: BrowserWindow | null = null
 // Here, you can also use other preload
@@ -46,6 +41,7 @@ async function createWindow() {
       contextIsolation: false,
     },
   })
+  win.removeMenu();
 
   if (process.env.VITE_DEV_SERVER_URL) { // electron-vite-vue#298
     win.loadURL(url)
@@ -66,12 +62,14 @@ async function createWindow() {
     return { action: 'deny' }
   })
 }
+
+
 async function registerListeners() {
   ipcMain.handle('test', (_, arg) => {
     const prisma = new PrismaClient()
 
     async function main() {
-      const user = await prisma.user.create({
+      const user = await prisma.category.create({
         data: {
           name: 'Alice 2',
           email: 'alice2@prisma.io',
@@ -91,7 +89,10 @@ async function registerListeners() {
       });
   })
 }
-app.on('ready', createWindow).whenReady().then(registerListeners).catch(e => console.error(e))
+app.on('ready', createWindow)
+  .whenReady()
+  .then(registerListeners)
+  .catch(e => console.error(e))
 
 app.on('window-all-closed', () => {
   win = null

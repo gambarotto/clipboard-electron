@@ -41,6 +41,8 @@
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
+    "polished": "^4.2.2",
+    "react-icons": "^4.8.0",
     "styled-components": "^5.3.8"
   }
 }
