@@ -3,6 +3,8 @@ import ItemList from '../../components/ItemList';
 import { HiOutlineAnnotation } from "react-icons/hi";
 import { MdOutlineCategory } from "react-icons/md";
 import { Container, MenuButton } from "./styles";
+import ModalCategory from '../../components/ModalCategory';
+import ModalAnnotation from '../../components/ModalAnnotation';
 
 const Home: React.FC = () => {
   return (
@@ -28,6 +30,8 @@ const Home: React.FC = () => {
           </button>
         </div>
       </MenuButton>
+      <ModalCategory />
+      <ModalAnnotation isOpen={false}/>
     </Container>
   );
 }
