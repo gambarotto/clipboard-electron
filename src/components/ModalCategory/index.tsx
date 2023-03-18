@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { HexColorPicker } from "react-colorful";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoCloseSharp, IoColorPaletteOutline } from "react-icons/io5";
 import ColorButton from "../ColorButton";
+import ModalColorPicker from "../ModalColorPicker";
 import { Container } from "./styles";
 
 interface PropsData {
@@ -56,6 +57,7 @@ const ModalCategory: React.FC<Props> = ({
 }) => {
   const [titleCategory, setTitleCategory] = useState(title);
   const [colorCategory, setColorCategory] = useState(color);
+  const [isOpenColorPicker, setIsOpenColorPicker] = useState(false);
   const [isActive, setIsActive] = useState(active);
 
   const handleTitle = useCallback(
@@ -92,11 +94,28 @@ const ModalCategory: React.FC<Props> = ({
             />
           </div>
           <div className="containerColorPiker">
-            {colors.map((item) => (
-              <ColorButton colorData={item}/>
-            ))}
-
-            {/* <HexColorPicker color={color} onChange={setColorCategory} /> */}
+            Selecione uma cor
+            <div className="containerColors">
+              <div className="containerColorsButton">
+                {colors.map((item) => (
+                  <ColorButton key={item.color} colorData={item} />
+                ))}
+              </div>
+              <button
+                className="buttonMoreColor"
+                type="button"
+                onClick={() => setIsOpenColorPicker(!isOpenColorPicker)}
+              >
+                <IoColorPaletteOutline color="#c1c1c1" />
+              </button>
+            </div>
+            {isOpenColorPicker && (
+              <ModalColorPicker
+                color={colorCategory}
+                setColorCategory={setColorCategory}
+                setIsOpened={setIsOpenColorPicker}
+              />
+            )}
           </div>
         </div>
         <a

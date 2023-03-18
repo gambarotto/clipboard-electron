@@ -40,10 +40,11 @@ export const Container = styled.div`
     }
   }
   .modal {
-    width: 300px;
+    max-width: 300px;
+    min-width: 280px;
     height: auto;
 
-    background-color: #333;
+    background-color: #272727;
 
     border-radius: 8px;
 
@@ -66,6 +67,7 @@ export const Container = styled.div`
       border-radius: 8px 8px 0px 0px;
 
       background: ${shade(0.5, "#333")};
+
     }
     .containerInput {
       padding: 10px 5px;
@@ -78,7 +80,7 @@ export const Container = styled.div`
 
       padding: 0px 10px;
 
-      background: ${lighten(0.1, "#333")};
+      background: #373737;
       color: #f4ede8;
       font-size: 12px;
       border: 0;
@@ -90,10 +92,52 @@ export const Container = styled.div`
 
     .containerColorPiker {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
 
       margin-top: 15px;
+      margin-left: 15px;
+      margin-right: 15px;
+
+      color: #757575;
+      font-size: 12px;
+
+      .containerColors {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+
+      }
+      .containerColorsButton{
+        margin-top: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+      }
+      .buttonMoreColor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 30px;
+
+        border-radius: 4px;
+        border-width: 0;
+
+        margin-left: 4px;
+
+        background-color: #333;
+        cursor: pointer;
+
+        box-shadow: 1px 1px 5px -3px rgba(0,0,0,0.75);
+      }
     }
     .buttonn {
       display: flex;
