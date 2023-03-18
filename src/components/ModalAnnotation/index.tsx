@@ -1,36 +1,35 @@
 /* eslint-disable no-unused-vars */
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useTheme } from "styled-components";
+import { AnnotationCategory, PropsDataAnnotation } from "../../pages/Home";
 import SelectElement from "../SelectElement";
 import { Container } from "./styles";
 
-interface PropsData {
-  id?: number | null;
-  name: string;
-  content: string;
-}
-
 interface Props {
-  id?: number;
-  name?: string;
-  content?: string;
+  data: PropsDataAnnotation;
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setData: (data: PropsData) => void;
+  setIsOpen: () => void;
+  setData: (data: PropsDataAnnotation) => void;
 }
 
 const ModalAnnotation: React.FC<Props> = ({
-  id,
-  name,
-  content,
+  data: { id, name, content, category },
   isOpen,
   setIsOpen,
   setData,
 }) => {
   const [nameAnnotation, setNameAnnotation] = useState(name);
   const [contentAnnotation, setContentAnnotation] = useState(content);
+  const [categoryAnnotation, setCategoryAnnotation] = useState<
+    AnnotationCategory[]
+  >([]);
   const theme = useTheme();
+
+  useEffect(() => {
+    setNameAnnotation(name);
+    setContentAnnotation(content);
+  }, [category, content, id, name]);
 
   const handleName = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +49,7 @@ const ModalAnnotation: React.FC<Props> = ({
   }
   return (
     <Container>
-      <button type="button" className="icon" onClick={() => setIsOpen(false)}>
+      <button type="button" className="icon" onClick={setIsOpen}>
         <IoCloseSharp color={theme.colors.text} />
       </button>
       <div className="modal">
@@ -75,7 +74,7 @@ const ModalAnnotation: React.FC<Props> = ({
             />
           </div>
           <div className="containerSelector">
-            <SelectElement />
+            <SelectElement setCategoryAnnotation={setCategoryAnnotation} />
           </div>
         </div>
         <button
@@ -86,6 +85,7 @@ const ModalAnnotation: React.FC<Props> = ({
               id,
               name: nameAnnotation || "",
               content: contentAnnotation || "",
+              category: categoryAnnotation,
             })
           }
         >

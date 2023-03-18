@@ -2,16 +2,17 @@
 import React from "react";
 import chroma from "chroma-js";
 
-import Select, { ActionMeta, StylesConfig } from "react-select";
+import Select, { StylesConfig } from "react-select";
+import { AnnotationCategory } from "../../pages/Home";
 
 interface ColourOption {
-  readonly value: string;
-  readonly label: string;
-  readonly color: string;
-  readonly isFixed?: boolean;
-  readonly isDisabled?: boolean;
+  value: string;
+  label: string;
+  color: string;
+  isFixed?: boolean;
+  isDisabled?: boolean;
 }
-const colourOptions: readonly ColourOption[] = [
+const colourOptions: ColourOption[] = [
   { value: "ocean", label: "Ocean", color: "#00B8D9", isFixed: true },
   { value: "blue", label: "Blue", color: "#0052CC", isDisabled: true },
   { value: "purple", label: "Purple", color: "#5243AA" },
@@ -27,10 +28,11 @@ const colourOptions: readonly ColourOption[] = [
 const colourStyles: StylesConfig<ColourOption, true> = {
   control: (styles, { isFocused }) => ({
     ...styles,
-    backgroundColor: "#242424",
+    backgroundColor: "#373737",
+    fontSize: "12px",
     border: 0,
     outline: isFocused ? "solid" : "none",
-    outlineColor: isFocused ? "#000000" : "#000000",
+    outlineColor: isFocused ? "#242424" : "#000000",
     outlineOffset: 0,
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
@@ -91,18 +93,19 @@ const colourStyles: StylesConfig<ColourOption, true> = {
     },
   }),
 };
-
-const SelectElement = () => {
-  const onChange = (
-    option: readonly ColourOption[],
-    actionMeta: ActionMeta<ColourOption>
-  ): void => {
-    console.log(option);
+interface Props {
+  setCategoryAnnotation: React.Dispatch<
+    React.SetStateAction<AnnotationCategory[]>
+  >;
+}
+const SelectElement: React.FC<Props> = ({ setCategoryAnnotation }) => {
+  const onChange = (option: ColourOption[]): void => {
+    setCategoryAnnotation(option);
   };
   return (
     <Select
       closeMenuOnSelect={false}
-      defaultValue={[colourOptions[0], colourOptions[1]]}
+      defaultValue={[]}
       isMulti
       options={colourOptions}
       styles={colourStyles}

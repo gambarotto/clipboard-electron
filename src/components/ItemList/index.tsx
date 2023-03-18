@@ -1,10 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { FiEdit } from "react-icons/fi";
 import { useTheme } from "styled-components";
+import { PropsDataAnnotation } from "../../pages/Home";
 
 import { Container } from "./styles";
 
-const ItemList: React.FC = () => {
+interface Props {
+  item: PropsDataAnnotation;
+  setDataModal: (data: PropsDataAnnotation) => void;
+}
+
+const ItemList: React.FC<Props> = ({ item, setDataModal }) => {
   const theme = useTheme();
 
   return (
@@ -12,20 +19,14 @@ const ItemList: React.FC = () => {
       <div className="hoverAnnotation">
         <div className="containerName">
           <div className="dot" />
-          <p>Nome anotação</p>
+          <p>{item.name}</p>
         </div>
 
-        <button type="button" onClick={() => {}}>
+        <button type="button" onClick={() => setDataModal(item)}>
           <FiEdit color={theme.colors.accent_color} />
         </button>
       </div>
-      <p className="dropdown-content">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industrys standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only
-        including versions of Lorem Ipsum. FIMM
-      </p>
+      <p className="dropdown-content">{item.content}</p>
     </Container>
   );
 };

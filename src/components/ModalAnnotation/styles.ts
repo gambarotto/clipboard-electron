@@ -79,7 +79,7 @@ export const Container = styled.div`
       padding: 0px 10px;
 
       background: ${({ theme }) => theme.colors.input};
-      color: ${({ theme }) => theme.colors.placeholder};
+      color: ${({ theme }) => theme.colors.text};
       font-size: 12px;
       border: 0;
       border-radius: 4px;
@@ -98,7 +98,7 @@ export const Container = styled.div`
       border: 0;
       border-radius: 4px;
 
-      color: ${({ theme }) => theme.colors.placeholder};
+      color: ${({ theme }) => theme.colors.text};
       font-family: "Roboto", sans-serif;
 
       padding: 5px 10px;
