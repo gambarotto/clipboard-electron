@@ -1,5 +1,5 @@
-import styled , {keyframes} from 'styled-components';
-import {shade} from 'polished';
+import styled from 'styled-components';
+
 export const Container = styled.div`
   display: flex;
   flex: 1;
@@ -25,8 +25,8 @@ export const MenuButton = styled.div`
   .main {
     width: 100%;
     height: 40px;
-    background-color: #e4ff1a;
-    color: #242424;
+    background-color: ${({ theme }) => theme.colors.accent_color};
+    color: ${({ theme }) => theme.colors.text_button};
     border: 0px;
     border-radius: 25px;
 
@@ -51,7 +51,7 @@ export const MenuButton = styled.div`
   & .menuContent > button {
     position: relative;
 
-    background-color: #e4ff1a;
+    background-color: ${({ theme }) => theme.colors.accent_color};
     border: 0px;
     margin-bottom: 3px;
 
@@ -84,7 +84,7 @@ export const MenuButton = styled.div`
     p {
       position: absolute;
       opacity: 0;
-      color: #242424;
+      color: ${({ theme }) => theme.colors.text_button};
       left: 40px;
 
       font-weight: 700;
@@ -98,10 +98,10 @@ export const MenuButton = styled.div`
       opacity: 1;
     }
   }
-      &:hover .menuContent {
-        display: flex;
-        pointer-events: visible;
-        opacity: 1;
-        z-index: 1;
-    }
+  &:hover .menuContent {
+    display: flex;
+    pointer-events: visible;
+    opacity: 1;
+    z-index: 1;
+  }
 `;

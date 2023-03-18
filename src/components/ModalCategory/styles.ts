@@ -25,7 +25,7 @@ export const Container = styled.div`
     height: 40px;
     border-radius: 20px;
 
-    background: #333;
+    background: ${({theme}) => theme.colors.background};
 
     display: flex;
     justify-content: center;
@@ -44,7 +44,7 @@ export const Container = styled.div`
     min-width: 280px;
     height: auto;
 
-    background-color: #272727;
+    background-color: ${({ theme }) => theme.colors.background};
 
     border-radius: 8px;
 
@@ -66,8 +66,8 @@ export const Container = styled.div`
 
       border-radius: 8px 8px 0px 0px;
 
-      background: ${shade(0.5, "#333")};
-
+      background:${({ theme }) => theme.colors.background_darker};
+      color: ${({ theme }) => theme.colors.title};
     }
     .containerInput {
       padding: 10px 5px;
@@ -80,8 +80,8 @@ export const Container = styled.div`
 
       padding: 0px 10px;
 
-      background: #373737;
-      color: #f4ede8;
+      background: ${({ theme }) => theme.colors.input};
+      color: ${({ theme }) => theme.colors.text};
       font-size: 12px;
       border: 0;
       border-radius: 4px;
@@ -100,7 +100,7 @@ export const Container = styled.div`
       margin-left: 15px;
       margin-right: 15px;
 
-      color: #757575;
+      color: ${({ theme }) => theme.colors.text_information};
       font-size: 12px;
 
       .containerColors {
@@ -133,7 +133,7 @@ export const Container = styled.div`
 
         margin-left: 4px;
 
-        background-color: #333;
+        background-color: ${({ theme }) => theme.colors.background_lighter};
         cursor: pointer;
 
         box-shadow: 1px 1px 5px -3px rgba(0,0,0,0.75);
@@ -147,7 +147,7 @@ export const Container = styled.div`
       margin: 5px 15px;
       margin-top: 50px;
 
-      background-color: #e4ff1a;
+      background-color: ${({ theme }) => theme.colors.accent_color};
       
       height: 40px;
       color: #242424;
@@ -158,7 +158,7 @@ export const Container = styled.div`
       box-shadow: 2px 7px 17px -3px rgba(0,0,0,0.75);
 
       &:hover {
-        background: ${shade(0.1, "#e4ff1a")};
+        background: ${({ theme }) => theme.colors.accent_color_hover};
       }
     }
   }

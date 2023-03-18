@@ -1,9 +1,12 @@
 import React from 'react';
 import { FiEdit } from "react-icons/fi";
+import { useTheme } from 'styled-components';
 
 import { Container } from "./styles";
 
 const ItemList: React.FC = () => {
+  const theme = useTheme();
+
   return (
     <Container>
       <div className='hoverAnnotation'>
@@ -13,7 +16,7 @@ const ItemList: React.FC = () => {
         </div>
   
         <a onClick={() => {}}>
-          <FiEdit color="#e4ff1a" />
+          <FiEdit color={theme.colors.accent_color} />
         </a>
       </div>
       <p className="dropdown-content">
