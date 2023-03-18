@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const MenuButton = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  
+
   width: 150px;
 
   display: flex;
@@ -31,7 +31,6 @@ export const MenuButton = styled.div`
     border-radius: 25px;
 
     font-weight: 700;
-
   }
   .menuContent {
     position: absolute;
@@ -63,14 +62,14 @@ export const MenuButton = styled.div`
     width: 40px;
     border-radius: 25px;
 
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     .icon {
       position: absolute;
 
       height: 40px;
       width: 40px;
       border-radius: 25px;
-      
+
       display: flex;
       justify-content: center;
       align-items: center;

@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
-import ItemList from '../../components/ItemList';
+import React, { useCallback, useState } from "react";
 import { HiOutlineAnnotation } from "react-icons/hi";
 import { MdOutlineCategory } from "react-icons/md";
+import ItemList from "../../components/ItemList";
 import { Container, MenuButton } from "./styles";
-import ModalCategory from '../../components/ModalCategory';
+import ModalCategory from "../../components/ModalCategory";
 import ModalAnnotation from "../../components/ModalAnnotation";
 
 interface PropsDataAnnotation {
@@ -23,10 +23,11 @@ const Home: React.FC = () => {
   const [dataAnnotation, setDataAnnotation] = useState<PropsDataAnnotation>(
     {} as PropsDataAnnotation
   );
-  const [selectedAnnotation, setSelectedAnnotation] = useState<PropsDataAnnotation>({
-    name: '',
-    content:''
-  });
+  const [selectedAnnotation, setSelectedAnnotation] =
+    useState<PropsDataAnnotation>({
+      name: "",
+      content: "",
+    });
   const [dataCategory, setDataCategory] = useState<PropsDataCategory>(
     {} as PropsDataCategory
   );
@@ -43,15 +44,17 @@ const Home: React.FC = () => {
       <ItemList />
       <ItemList />
       <MenuButton>
-        <button className="main">Nova</button>
+        <button className="main" type="button">
+          Nova
+        </button>
         <div className="menuContent">
-          <button onClick={() => setIsModalCategoryOpen(true)}>
+          <button type="button" onClick={() => setIsModalCategoryOpen(true)}>
             <div className="icon">
               <MdOutlineCategory color="#242424" size={20} />
             </div>
             <p>Categoria</p>
           </button>
-          <button onClick={() => setIsModalAnnotationOpen(true)}>
+          <button type="button" onClick={() => setIsModalAnnotationOpen(true)}>
             <div className="icon">
               <HiOutlineAnnotation color="#242424" size={20} />
             </div>
@@ -75,6 +78,6 @@ const Home: React.FC = () => {
       />
     </Container>
   );
-}
+};
 
-export default Home
+export default Home;

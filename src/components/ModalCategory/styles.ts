@@ -1,5 +1,5 @@
-import { lighten, shade } from 'polished';
-import styled, { css } from 'styled-components';
+import { shade } from "polished";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -12,9 +12,8 @@ export const Container = styled.div`
 
   height: 100%;
   width: 100%;
- 
 
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
 
   .icon {
     position: absolute;
@@ -25,18 +24,18 @@ export const Container = styled.div`
     height: 40px;
     border-radius: 20px;
 
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    box-shadow: 2px 7px 17px -3px rgba(0,0,0,0.75);
+    box-shadow: 2px 7px 17px -3px rgba(0, 0, 0, 0.75);
 
     cursor: pointer;
     &:hover {
       background: ${shade(0.1, "#242424")};
-      box-shadow: 2px 20px 36px -3px rgba(0,0,0,0.75);
+      box-shadow: 2px 20px 36px -3px rgba(0, 0, 0, 0.75);
     }
   }
   .modal {
@@ -52,7 +51,7 @@ export const Container = styled.div`
     padding-bottom: 10px;
 
     z-index: 10;
-    box-shadow: 2px 7px 17px -3px rgba(0,0,0,0.75);
+    box-shadow: 2px 7px 17px -3px rgba(0, 0, 0, 0.75);
     .containerTitle {
       height: 50px;
       width: 100%;
@@ -66,7 +65,7 @@ export const Container = styled.div`
 
       border-radius: 8px 8px 0px 0px;
 
-      background:${({ theme }) => theme.colors.background_darker};
+      background: ${({ theme }) => theme.colors.background_darker};
       color: ${({ theme }) => theme.colors.title};
     }
     .containerInput {
@@ -110,15 +109,13 @@ export const Container = styled.div`
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
-
       }
-      .containerColorsButton{
+      .containerColorsButton {
         margin-top: 15px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-
       }
       .buttonMoreColor {
         display: flex;
@@ -136,10 +133,10 @@ export const Container = styled.div`
         background-color: ${({ theme }) => theme.colors.background_lighter};
         cursor: pointer;
 
-        box-shadow: 1px 1px 5px -3px rgba(0,0,0,0.75);
+        box-shadow: 1px 1px 5px -3px rgba(0, 0, 0, 0.75);
       }
     }
-    .buttonn {
+    .button {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -148,20 +145,19 @@ export const Container = styled.div`
       margin-top: 50px;
 
       background-color: ${({ theme }) => theme.colors.accent_color};
-      
+
       height: 40px;
+      width: 250px;
       color: #242424;
 
       border-radius: 8px;
 
       cursor: pointer;
-      box-shadow: 2px 7px 17px -3px rgba(0,0,0,0.75);
+      box-shadow: 2px 7px 17px -3px rgba(0, 0, 0, 0.75);
 
       &:hover {
         background: ${({ theme }) => theme.colors.accent_color_hover};
       }
     }
   }
-
-
 `;

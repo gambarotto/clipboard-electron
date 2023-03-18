@@ -1,5 +1,5 @@
-import { lighten, shade } from 'polished';
-import styled from 'styled-components';
+import { lighten } from "polished";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     border-radius: 4px;
 
     background: #373737;
@@ -26,8 +26,8 @@ export const Container = styled.div`
     border: none;
 
     &:hover {
-      background: ${lighten(0.05,"#373737")};
-      box-shadow: 1px 1px 5px -3px rgba(0,0,0,0.75);
+      background: ${lighten(0.05, "#373737")};
+      box-shadow: 1px 1px 5px -3px rgba(0, 0, 0, 0.75);
     }
   }
 `;

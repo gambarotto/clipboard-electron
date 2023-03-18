@@ -1,7 +1,9 @@
-import React, { useCallback, useState } from 'react';
-import SelectElement from '../SelectElement';
-import {IoCloseSharp} from 'react-icons/io5';
-import { Container } from './styles';
+/* eslint-disable no-unused-vars */
+import React, { useCallback, useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import { useTheme } from "styled-components";
+import SelectElement from "../SelectElement";
+import { Container } from "./styles";
 
 interface PropsData {
   id?: number | null;
@@ -18,10 +20,18 @@ interface Props {
   setData: (data: PropsData) => void;
 }
 
-const ModalAnnotation: React.FC<Props> = ({ id, name, content, isOpen, setIsOpen, setData }) => {
-  const [nameAnnotation,setNameAnnotation] = useState(name);
-  const [contentAnnotation,setContentAnnotation] = useState(content);
-  
+const ModalAnnotation: React.FC<Props> = ({
+  id,
+  name,
+  content,
+  isOpen,
+  setIsOpen,
+  setData,
+}) => {
+  const [nameAnnotation, setNameAnnotation] = useState(name);
+  const [contentAnnotation, setContentAnnotation] = useState(content);
+  const theme = useTheme();
+
   const handleName = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setNameAnnotation(event.target.value);
@@ -35,14 +45,14 @@ const ModalAnnotation: React.FC<Props> = ({ id, name, content, isOpen, setIsOpen
     []
   );
 
-  if(!isOpen) {
+  if (!isOpen) {
     return null;
   }
   return (
     <Container>
-      <a className="icon" onClick={() => setIsOpen(false)}>
-        <IoCloseSharp />
-      </a>
+      <button type="button" className="icon" onClick={() => setIsOpen(false)}>
+        <IoCloseSharp color={theme.colors.text} />
+      </button>
       <div className="modal">
         <div className="containerTitle">Nova Anotação</div>
         <div className="containerContent">
@@ -68,21 +78,22 @@ const ModalAnnotation: React.FC<Props> = ({ id, name, content, isOpen, setIsOpen
             <SelectElement />
           </div>
         </div>
-        <a
-          className="buttonn"
+        <button
+          type="button"
+          className="button"
           onClick={() =>
             setData({
-              id: id,
-              name: nameAnnotation || '',
-              content: contentAnnotation || '',
+              id,
+              name: nameAnnotation || "",
+              content: contentAnnotation || "",
             })
           }
         >
           Salvar
-        </a>
+        </button>
       </div>
     </Container>
   );
-}
+};
 
 export default ModalAnnotation;

@@ -1,5 +1,5 @@
-import { lighten, shade } from 'polished';
-import styled, { css } from 'styled-components';
+import { shade } from "polished";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -12,9 +12,8 @@ export const Container = styled.div`
 
   height: 100%;
   width: 100%;
- 
 
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
 
   .icon {
     position: absolute;
@@ -31,16 +30,17 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
 
-    box-shadow: 2px 7px 17px -3px rgba(0,0,0,0.75);
+    box-shadow: 2px 7px 17px -3px rgba(0, 0, 0, 0.75);
 
     cursor: pointer;
     &:hover {
       background: ${shade(0.1, "#242424")};
-      box-shadow: 2px 20px 36px -3px rgba(0,0,0,0.75);
+      box-shadow: 2px 20px 36px -3px rgba(0, 0, 0, 0.75);
     }
   }
   .modal {
-    width: 300px;
+    max-width: 300px;
+    min-width: 280px;
     height: auto;
 
     background-color: ${({ theme }) => theme.colors.background};
@@ -51,7 +51,7 @@ export const Container = styled.div`
     padding-bottom: 10px;
 
     z-index: 10;
-    box-shadow: 2px 7px 17px -3px rgba(0,0,0,0.75);
+    box-shadow: 2px 7px 17px -3px rgba(0, 0, 0, 0.75);
     .containerTitle {
       height: 50px;
       width: 100%;
@@ -90,7 +90,6 @@ export const Container = styled.div`
     .containerTextArea {
       width: 100%;
       padding: 5px 15px;
-
     }
     .containerTextArea textarea {
       width: 100%;
@@ -100,7 +99,7 @@ export const Container = styled.div`
       border-radius: 4px;
 
       color: ${({ theme }) => theme.colors.placeholder};
-      font-family: 'Roboto', sans-serif;
+      font-family: "Roboto", sans-serif;
 
       padding: 5px 10px;
 
@@ -111,7 +110,7 @@ export const Container = styled.div`
     .containerSelector {
       padding: 5px 15px;
     }
-    .buttonn {
+    .button {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -120,20 +119,18 @@ export const Container = styled.div`
       margin-top: 50px;
 
       background: ${({ theme }) => theme.colors.accent_color};
-      
-      height: 40px;
       color: ${({ theme }) => theme.colors.text_button};
 
+      height: 40px;
+      width: 250px;
       border-radius: 8px;
 
       cursor: pointer;
-      box-shadow: 2px 7px 17px -3px rgba(0,0,0,0.75);
+      box-shadow: 2px 7px 17px -3px rgba(0, 0, 0, 0.75);
 
       &:hover {
         ${({ theme }) => theme.colors.accent_color_hover};
       }
     }
   }
-
-
 `;

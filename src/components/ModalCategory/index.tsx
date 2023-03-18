@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
-import { HexColorPicker } from "react-colorful";
 import { IoCloseSharp, IoColorPaletteOutline } from "react-icons/io5";
+import { useTheme } from "styled-components";
 import ColorButton from "../ColorButton";
 import ModalColorPicker from "../ModalColorPicker";
 import { Container } from "./styles";
@@ -18,6 +18,7 @@ interface Props {
   color: string;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  // eslint-disable-next-line no-unused-vars
   setData: (data: PropsData) => void;
 }
 const colors = [
@@ -55,6 +56,7 @@ const ModalCategory: React.FC<Props> = ({
   setIsOpen,
   setData,
 }) => {
+  const theme = useTheme();
   const [titleCategory, setTitleCategory] = useState(title);
   const [colorCategory, setColorCategory] = useState(color);
   const [isOpenColorPicker, setIsOpenColorPicker] = useState(false);
@@ -78,9 +80,9 @@ const ModalCategory: React.FC<Props> = ({
   }
   return (
     <Container>
-      <a className="icon" onClick={() => setIsOpen(false)}>
-        <IoCloseSharp />
-      </a>
+      <button type="button" className="icon" onClick={() => setIsOpen(false)}>
+        <IoCloseSharp color={theme.colors.text} />
+      </button>
       <div className="modal">
         <div className="containerTitle">Nova Categoria</div>
         <div className="containerContent">
@@ -118,11 +120,12 @@ const ModalCategory: React.FC<Props> = ({
             )}
           </div>
         </div>
-        <a
-          className="buttonn"
+        <button
+          type="button"
+          className="button"
           onClick={() =>
             setData({
-              id: id,
+              id,
               title: titleCategory || "",
               active: isActive,
               color: colorCategory || "",
@@ -130,7 +133,7 @@ const ModalCategory: React.FC<Props> = ({
           }
         >
           Salvar
-        </a>
+        </button>
       </div>
     </Container>
   );

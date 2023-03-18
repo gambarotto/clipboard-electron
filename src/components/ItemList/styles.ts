@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { shade } from 'polished';
+import styled from "styled-components";
+import { shade } from "polished";
 
 export const Container = styled.div`
   position: relative;
@@ -10,7 +10,7 @@ export const Container = styled.div`
   border-radius: 4px;
   height: 30px;
   transition: height 5s;
-  
+
   div.hoverAnnotation {
     display: flex;
     flex-direction: row;
@@ -19,12 +19,12 @@ export const Container = styled.div`
     padding: 4px 5px;
     height: 30px;
     overflow: hidden;
-    
-    a {
+
+    button {
       opacity: 0;
       transition: opacity 1s;
     }
-    &:hover a{
+    &:hover button {
       opacity: 1;
     }
   }
@@ -45,9 +45,8 @@ export const Container = styled.div`
   }
   div > p {
     font-size: 14px;
-
   }
-  a {
+  button {
     display: flex;
     width: 30px;
     cursor: pointer;
@@ -55,6 +54,7 @@ export const Container = styled.div`
     border-radius: 4px;
     justify-content: center;
     align-items: center;
+    background: transparent;
   }
 
   &:not(first-child) {
@@ -70,7 +70,7 @@ export const Container = styled.div`
     padding-bottom: 15px;
     font-size: 12px;
     letter-spacing: 1px;
-    color: ${shade(0.3,'#fff')};
+    color: ${shade(0.3, "#fff")};
     transition: opacity 0.5s;
   }
   &:hover {
@@ -80,4 +80,4 @@ export const Container = styled.div`
     opacity: 1;
     visibility: visible;
   }
-`
+`;

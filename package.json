@@ -36,7 +36,19 @@
     "vite": "^4.1.4",
     "vite-electron-plugin": "^0.8.2",
     "vite-plugin-electron": "^0.11.1",
-    "vite-plugin-electron-renderer": "^0.12.1"
+    "vite-plugin-electron-renderer": "^0.12.1",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1"
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"

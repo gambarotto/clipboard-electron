@@ -1,5 +1,4 @@
-import { shade } from 'polished';
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 interface PropsContainer {
   color: string;
@@ -12,14 +11,16 @@ export const Container = styled.div<PropsContainer>`
   align-items: center;
 
   border: solid 1px #373737;
-  ${({selected, color}) =>  selected && css`
-    border: solid 1px ${color};
-  `};
+  ${({ selected, color }) =>
+    selected &&
+    css`
+      border: solid 1px ${color};
+    `};
 
   border-radius: 4px;
 
   cursor: pointer;
-  &:not(first-child){
+  &:not(first-child) {
     margin-left: 4px;
   }
   div {
@@ -27,6 +28,6 @@ export const Container = styled.div<PropsContainer>`
     width: 28px;
     height: 28px;
     border-radius: 4px;
-    background: ${({color}) => color};
+    background: ${({ color }) => color};
   }
 `;

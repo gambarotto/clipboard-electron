@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from "react";
 import chroma from "chroma-js";
 
@@ -28,7 +29,7 @@ const colourStyles: StylesConfig<ColourOption, true> = {
     ...styles,
     backgroundColor: "#242424",
     border: 0,
-    outline: isFocused ? "solid":"none", 
+    outline: isFocused ? "solid" : "none",
     outlineColor: isFocused ? "#000000" : "#000000",
     outlineOffset: 0,
   }),
@@ -62,13 +63,11 @@ const colourStyles: StylesConfig<ColourOption, true> = {
       },
     };
   },
-  menuList: (styles) => {
-    return {
-      ...styles,
-      backgroundColor: "#333",
-      maxHeight: 200,
-    };
-  },
+  menuList: (styles) => ({
+    ...styles,
+    backgroundColor: "#333",
+    maxHeight: 200,
+  }),
   // container dos itens selecionados que são mostrados no campo do input
   multiValue: (styles, { data }) => {
     const color = chroma(data.color);
@@ -94,18 +93,22 @@ const colourStyles: StylesConfig<ColourOption, true> = {
 };
 
 const SelectElement = () => {
-  const onChange = (option: readonly ColourOption[], actionMeta: ActionMeta<ColourOption>) => {
+  const onChange = (
+    option: readonly ColourOption[],
+    actionMeta: ActionMeta<ColourOption>
+  ): void => {
     console.log(option);
-    
-  }
-  return (<Select
-    closeMenuOnSelect={false}
-    defaultValue={[colourOptions[0], colourOptions[1]]}
-    isMulti
-    options={colourOptions}
-    styles={colourStyles}
-    placeholder="Selecione a categoria"
-    onChange={onChange}
-  />)
+  };
+  return (
+    <Select
+      closeMenuOnSelect={false}
+      defaultValue={[colourOptions[0], colourOptions[1]]}
+      isMulti
+      options={colourOptions}
+      styles={colourStyles}
+      placeholder="Selecione a categoria"
+      onChange={onChange}
+    />
+  );
 };
 export default SelectElement;
