@@ -1,10 +1,10 @@
-import 'react'
-import GlobalStyles from './styles/global'
-import Home from "./pages/Home"
-import { ThemeProvider } from 'styled-components';
-import theme from './styles/theme';
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./styles/global";
+import Home from "./pages/Home";
+import theme from "./styles/theme";
 
-function App() {
+function App(): JSX.Element {
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

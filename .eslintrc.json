@@ -19,7 +19,7 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-one-expression-per-line": "off",
     "no-use-before-define": "off",
