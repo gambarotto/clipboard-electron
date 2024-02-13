@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { HiOutlineAnnotation } from "react-icons/hi";
 import { MdOutlineCategory } from "react-icons/md";
+
+import { Button } from "@/components/ui/button";
 import ItemList from "../../components/ItemList";
 import { Container, MenuButton } from "./styles";
 import ModalCategory from "../../components/ModalCategory";
@@ -129,6 +131,8 @@ const Home: React.FC = () => {
           </li>
         ))}
       </ul>
+      <Button>teste</Button>
+      <Button className="h-24">teste</Button>
       <MenuButton>
         <button className="main" type="button">
           Nova
